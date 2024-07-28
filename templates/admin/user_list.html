@@ -1,0 +1,198 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Foydalanuvchi royxati{% endblock %}
+
+{% block content %}
+<style>
+/* CSS Reset */
+
+
+.container_user_list {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styles */
+.h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 16px;
+}
+
+table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Button Styles */
+button {
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+button.delete-button {
+    background-color: #e74c3c;
+}
+
+button.delete-button:hover {
+    background-color: #c0392b;
+}
+
+button.sms-button {
+    background-color: #3498db;
+}
+
+button.sms-button:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive Styles */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 5px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #575757;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+    }
+
+    input[type="text"], button {
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: 5px;
+    }
+}
+
+/* For devices with a screen width up to 600px (smartphones) */
+
+</style>
+  <div class="container_user_list">
+        <h2 class=".h2">Foydalanuvchilar royhati</h2>
+        <form method="get" action="{% url 'user_list' %}">
+            <input type="text" name="q" value="{{ query }}" placeholder="Oxirgi 4 raqam">
+            <button type="submit">Qidirish</button>
+        </form>
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Ismi</th>
+                    <th>Telefon raqami</th>
+                    <th>Tariff tugash vaqti</th>
+                    <th>Ammalar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                {% if not user.is_staff %}
+                <tr>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.phone_number }}</td>
+                    <td>
+                        {% if user.current_tariffs %}
+                            {% for tariff in user.current_tariffs %}
+                                {{ tariff.end_date }}<br>
+                        {% empty %}
+                                No active tariffs
+                            {% endfor %}
+                        {% else %}
+                            No active tariffs
+                        {% endif %}
+                    </td>
+                    <td>
+                        <form action="{% url 'delete_user' user.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="delete-button">O'chirish</button>
+                        </form>
+                        <form action="{% url 'send_sms_to_user' user.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="sms-button">Tarifingiz tugagan dep habar yuborish</button>
+                        </form>
+                    </td>
+                        {% endif %}
+                </tr>
+                    {% empty %}
+                <tr>
+                    <td colspan="4">No users found.</td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+<script>
+    if(success){
+        alert("success")
+    }
+</script>
+{% endblock %}

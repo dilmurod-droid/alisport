@@ -1,0 +1,108 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Foydalanuvchi uchun tarif belgilash{% endblock %}
+
+{% block content %}
+<style>
+    /* Global Styles */
+.body_choice {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container Styles */
+.container-choice {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Title Styles */
+.h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Button Styles */
+.submit-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+</style>
+<div class="body_choice">
+    <div class="container-choice ">
+        <h2 class=".h2">Tariff tanlash</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="user">Foydalanuvchini tanlang:</label>
+                <select id="user" name="user" required>
+                    {% for user in users %}
+                        <option value="{{ user.id }}">{{ user.username }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="tariff">Tariff tanlang:</label>
+                <select id="tariff" name="tariff" required>
+                    {% for tariff in tariffs %}
+                        <option value="{{ tariff.id }}">{{ tariff.name }} - {{ tariff.price }} USZ - {{ tariff.days }} kun -  {% if tariff.every_or_one == 'in_one_day' and tariff.name != '1-kunlik'%}
+                Haftada 3 martta
+            {% elif  tariff.every_or_one != 'in_one_day' and tariff.name != '1-kunlik' %}
+                VIP
+            {% endif %}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

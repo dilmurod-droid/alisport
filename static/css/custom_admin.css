@@ -1,0 +1,127 @@
+/* Global Admin Panel Stil O'zgarishlari */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Admin Panel Bosh Sarlavha */
+#header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-bottom: 2px solid #0056b3;
+}
+
+#header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+/* Admin Panel Menu */
+#sidebar {
+    background-color: #343a40;
+    color: #fff;
+}
+
+#sidebar h2 {
+    padding: 15px;
+    font-size: 20px;
+    border-bottom: 1px solid #495057;
+}
+
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#sidebar ul li {
+    margin-bottom: 10px;
+}
+
+#sidebar ul li a {
+    color: #ced4da;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+#sidebar ul li a:hover {
+    background-color: #495057;
+    color: #fff;
+}
+
+/* Asosiy Kontent */
+#content-main {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Formalar */
+fieldset {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fefefe;
+}
+
+legend {
+    font-weight: bold;
+}
+
+/* Tugmalar */
+button, .button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover, .button:hover {
+    background-color: #0056b3;
+}
+
+/* Jadval Ko'rinishi */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
+
+table th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
+
+/* Xatoliklar va Xabarlar */
+.message {
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}

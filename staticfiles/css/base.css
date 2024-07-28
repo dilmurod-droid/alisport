@@ -1,0 +1,88 @@
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+}
+
+/* Container Styles */
+.container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: #333;
+    color: #fff;
+    width: 250px;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+/* Hide sidebar by default on mobile */
+.sidebar.collapsed {
+    transform: translateX(-250px);
+}
+
+/* Sidebar Toggle Button Styles */
+.sidebar-toggle {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.sidebar-toggle:hover {
+    background-color: #575757;
+}
+
+/* Sidebar Links */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 40px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #575757;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Responsive Styles */
+/* For devices with a screen width up to 768px (tablets and mobile phones) */

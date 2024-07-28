@@ -1,0 +1,87 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Bosh Sahifa - Admin Panel{% endblock %}
+
+{% block content %}
+<style>
+   /* Home Page Styles */
+.info-container {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: auto;
+}
+
+.info-container h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.info-container h2 {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.info-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-container ul li {
+    margin-bottom: 15px;
+}
+
+.info-container ol {
+    margin-top: 20px;
+}
+
+.info-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.info-container a:hover {
+    text-decoration: underline;
+}
+
+</style>
+    <div class="info-container">
+        <h1>Admin Panel</h1>
+        <p>Admin paneliga xush kelibsiz. Bu yerda tizimning turli jihatlarini boshqarishingiz mumkin.</p>
+
+        <h2>Mavjud Harakatlar</h2>
+        <ul>
+            <li>
+                <strong>Foydalanuvchilarni Boshqarish:</strong>
+                <p>Foydalanuvchilarni qo'shish, ko'rish, tahrirlash va o'chirish mumkin. Bu foydalanuvchi bazasini saqlash uchun muhimdir.</p>
+            </li>
+            <li>
+                <strong>Tariflarni Boshqarish:</strong>
+                <p>Foydalanuvchilar tanlashi mumkin bo'lgan tariflarni yaratish va boshqarish. Bu sizga turli narx variantlarini taklif etish imkonini beradi.</p>
+            </li>
+            <li>
+                <strong>Foydalanuvchi Ro'yxatini Ko'rish:</strong>
+                <p>Barcha ro'yxatdan o'tgan foydalanuvchilar va ularning sotib olgan tariflarini ko'rish. Obunalarni nazorat qilish uchun foydalidir.</p>
+            </li>
+            <li>
+                <strong>SMS Yuborish:</strong>
+                <p>Foydalanuvchilarga SMS xabarlar yuborish. Bu kodlar yoki bildirishnomalar yuborish uchun foydalidir.</p>
+            </li>
+        </ul>
+
+        <h2>Qanday Foydalanish</h2>
+        <ol>
+            <li>
+                <strong>Foydalanuvchilarni Boshqarish:</strong> <a href="{% url 'user_list' %}">Foydalanuvchi Ro'yxati</a> sahifasiga o'ting va foydalanuvchilarni boshqaring.
+            </li>
+            <li>
+                <strong>Tariflarni Boshqarish:</strong> Yangi tariflarni sozlash uchun <a href="{% url 'choice_tariff' %}">Tarif Tanlash</a> sahifasidan foydalaning.
+            </li>
+            <li>
+                <strong>SMS Yuborish:</strong> SMS yuborish uchun <a href="{% url 'user_list' %}">Foydalanuvchi Ro'yxati</a> sahifasidan foydalaning.
+            </li>
+        </ol>
+    </div>
+{% endblock %}
